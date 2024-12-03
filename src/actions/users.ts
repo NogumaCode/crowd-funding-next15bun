@@ -1,3 +1,4 @@
+"use server"
 import { db } from "@/db/drizzle";
 import { Users } from "@/db/schema";
 import { currentUser } from "@clerk/nextjs/server";
@@ -63,7 +64,7 @@ export const getCurrentUserDataFromDB = async () => {
     const loggedInUserData = await currentUser();
 
     if (!loggedInUserData) {
-      throw new Error("User not logged in.");
+      throw new Error("ログインしていません。");
     }
 
     // ログイン中のユーザー情報を取得
@@ -74,7 +75,7 @@ export const getCurrentUserDataFromDB = async () => {
       .limit(1);
 
     if (user.length === 0) {
-      throw new Error("User not found.");
+      throw new Error("ユーザーが見つかりません。");
     }
 
     return user[0];
@@ -85,7 +86,7 @@ export const getCurrentUserDataFromDB = async () => {
       };
     } else {
       return {
-        error: "An unknown error occurred.",
+        error: "不明なエラーが発生しました。",
       };
     }
   }

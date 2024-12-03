@@ -2,7 +2,7 @@ import React from 'react'
 
 function CampaginPage() {
   return (
-    <div>CampaginPage</div>
+    <div className='p-10'>CampaginPage</div>
   )
 }
 

@@ -6,6 +6,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 const font = Noto_Sans_JP({ subsets: ["latin"] });
 
 import { jaJP } from "@clerk/localizations";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,7 +22,9 @@ export default function RootLayout({
     <ClerkProvider localization={jaJP}>
     <html lang="ja">
       <body className={font.className} >
-        {children}
+        <main>{children}
+        <Toaster />
+        </main>
       </body>
     </html>
       </ClerkProvider>
